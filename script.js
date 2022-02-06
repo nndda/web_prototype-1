@@ -7,14 +7,22 @@ let shdGlitch = new PIXI.filters.GlitchFilter();
 let shdColorSplit = new PIXI.filters.RGBSplitFilter();
 
 const style = new PIXI.TextStyle({
+  fontFamily: "Helvetica",
+  fontSize: 32,
+  fill: "#ffffff",
+  });
+let text = new PIXI.Text(
+  'hi uh still figuring \nout how to use \na custom model, \nhold on', style
+  );
+
+const sus_btn_style = new PIXI.TextStyle({
     fontFamily: "Helvetica",
     fontSize: 32,
     fill: "#ffffff",
     });
-
-let text = new PIXI.Text(
-    'hi uh still figuring \nout how to use \na custom model, \nhold on', style
-    );
+let sus_btn = new PIXI.Text(
+  "--> [ Consider clicking on this text ]  <-- OwO ", sus_btn_style
+  );
 
 (async function main() {
   const app = new PIXI.Application({
@@ -26,6 +34,7 @@ let text = new PIXI.Text(
 
   app.stage.addChild(model4);
   app.stage.addChild(text);
+  app.stage.addChild(sus_btn);
 
   let wh = window.innerHeight;
   let ww = window.innerWidth;
@@ -36,6 +45,8 @@ let text = new PIXI.Text(
   model4.y = 0;
   text.x = (ww/2)+((ww/2)*(10/100));
   text.y = (wh/2)-30;
+  sus_btn.x = text.x-80;
+  sus_btn.y = text.y-150;
   // text.rotation = rotatet;
 
 
@@ -69,6 +80,8 @@ let text = new PIXI.Text(
 
 let tdelta = 0;
 let rotatet = 0;
+let stp = 0;
+let stp3 = 0;
 // let xd_R = 0;
 // let xd_G = 0;
 // let xd_B = 0;
@@ -83,6 +96,23 @@ function animate() {
   }else{
     text.text = 'hi uh still figuring \nout how to use \na custom model, \nhold on. UwU';
   };
+
+  stp += 0.5;
+  stp3 = stp - 3 * Math.floor((stp-1)/3);
+
+  switch(stp3){
+    case 1:
+      sus_btn.text = "--> [ Consider clicking on this text ]  <-- UwO ";
+      break;
+    case 2:
+      sus_btn.text = "->- [ Consider clicking on this text ]  -<- OwO ";
+      break;
+    case 3:
+      sus_btn.text = ">-- [ Consider clicking on this text ]  --< OwO ";
+      break;
+  };
+
+
   //   };
   // rotatet = getRandomInt(4,90);
   shdColorSplit.red=[getRandomInt(3,10),getRandomInt(3,10)];
